@@ -8,24 +8,38 @@ def show(col):
      error=""
      columns=df.columns.tolist()
      data=[]
-     if col in columns:
-          columns= col
-          data=df[col].tolist()
-     else:
-          error="Entered column name is not present."
-     return columns,data,error
+     cols=[]
+     for c in col:
+          if c in columns:
+               cols.append(c)
+               data.append(df[c].tolist())
+          else:
+               error=f"{c} column name is not present.\n"
+               return cols,data,error
+     d=[]
+     for i in range(len(data[0])):
+          l=[]
+          for j in range(len(cols)):
+                 l.append(data[j][i])
+          d.append(l)
+     # print(d)
+     return cols,d,error
 
 def hide(col):
      global df
+     df1=df
      columns=df.columns.tolist()
      data=[]
      error=""
-     if col in columns:
-          df=df.drop(columns=[col])
-          columns=df.columns.tolist()
-          data=df.values.tolist()
-     else:
-          error="Entered column name is not present."
+     for c in col:
+          if c in columns:
+               df1=df1.drop(columns=[c])
+          else:
+               error=f"{c} column name is not present."
+               return columns,data,error
+     df=df1
+     columns=df.columns.tolist()
+     data=df.values.tolist()
      return columns,data,error
 
 def query(response):

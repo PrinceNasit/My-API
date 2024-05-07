@@ -10,9 +10,12 @@ def get_query_response(request):
     try:
         data = request.get_json()
         user_query = data["query"]
-        qr=user_query.split()
-        s=" ".join(qr[1:])
-        r=[qr[0],s]
+        qr=user_query.split(",")
+        e=qr[0].split(" ")
+        s=" ".join(e[1:])
+        qr.append(s)
+        r=[e[0],qr[1:]]
+        print(r)
         columns,data,error=actions.query(r)
         if error=="": 
             return json.dumps({"columns":columns,"data":data,"error":"NaN"}),200
