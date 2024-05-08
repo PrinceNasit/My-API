@@ -4,11 +4,9 @@ from actions import show, hide, query
 
 class TestFunctions(unittest.TestCase):
     def setUp(self):
-        # Load the CSV file for testing
         self.df = pd.read_csv("C:\\Users\\Prince\\Desktop\\My-API\\testing.csv")
 
     def test_show(self):
-            # Test show function
             columns, data, error = show(['HD', 'Clarity', 'Color'])
             expected_columns = ['HD', 'Clarity', 'Color']
             expected_data = [['HD', 'VS1', 'H'], ['HD', 'SI2', 'G'], ['HD', 'SI2', 'H'], ['HD', 'SI2', 'H'], ['HD', 'SI2', 'H'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G'], ['HD', 'VS1', 'G']]
