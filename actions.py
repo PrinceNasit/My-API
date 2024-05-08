@@ -47,7 +47,9 @@ def query(response):
     columns=df.columns.tolist()
     data=[]
     error=""
-    if response[0].lower()=="show":
+    if response[1] is None:
+         error="Give appropriate inputs."
+    elif response[0].lower()=="show":
          col=response[1]
          columns, data,error=show(col)
     elif response[0].lower()=="hide":
