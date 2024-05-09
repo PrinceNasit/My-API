@@ -24,6 +24,12 @@ class TestFunctions(unittest.TestCase):
             self.assertEqual(data, expected_data)
             self.assertEqual(error, expected_error)
 
+    def test_show_after_test_hide(self):
+        invalid_column = ['HD','Photo']
+        cols, data, error = show([invalid_column])
+        
+        self.assertEqual(error, f"{invalid_column} column name is not present.\n")
+
     def test_query_show(self):
             columns, data, error = query(['show', ['Flour', 'Cut']])
             expected_columns = ['Flour', 'Cut']
@@ -41,6 +47,12 @@ class TestFunctions(unittest.TestCase):
             self.assertEqual(columns, expected_columns)
             self.assertEqual(data, expected_data)
             self.assertEqual(error, expected_error)
+
+    def test_show_after_test_query_hide(self):
+        invalid_column = ['Stone ID','Photo']
+        cols, data, error = show([invalid_column])
+        
+        self.assertEqual(error, f"{invalid_column} column name is not present.\n")
         
     def test_show_invalid_column(self):
         invalid_column = ['HD','photo']
